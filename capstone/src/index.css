@@ -14,11 +14,7 @@
   -webkit-text-size-adjust: 100%;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
+
 a:hover {
   color: #535bf2;
 }
@@ -30,6 +26,10 @@ body {
   min-width: 320px;
   min-height: 100vh;
   font-family: Roboto, Helvetica, Arial, sans-serif;
+  background-image: url('https://earthsky.org/upl/gravity_forms/6-d184048789a60d766a02a8e43117298b/2022/08/White-desert-1.jpg');
+    background-size: cover; 
+    background-repeat: no-repeat; 
+    background-attachment: fixed;
 }
 
 h1 {
@@ -37,34 +37,95 @@ h1 {
   line-height: 1.1;
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
+.detailsButton {
+  border: none;
   padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
+  font-size: .8rem;
+  font-weight: 200;
+  background: linear-gradient(to bottom, #101062, #8c6194); 
+  color: white;
   cursor: pointer;
-  transition: border-color 0.25s;
+  transition: background 0.25s, color 0.25s;
+  font-family: 'DM Sans', sans-serif;
 }
 button:hover {
-  border-color: #646cff;
+   opacity: 0.7; 
 }
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+.row {
+  display: flex;
+  margin-right: -15px;
+  margin-left: -15px;
+  row-gap: 1rem;
+}
+.card-container {
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 100%;
+  max-width: auto;
+  padding-right: .2rem;
+  padding-left: .2rem;
+  justify-content: center;
+  align-items: center;
+  font-family: 'DM Sans', sans-serif;
+}
+.navbarset {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  font-family: 'Ubuntu', sans-serif;
+  color:#d0c4d3;
+  font-size: 1.6rem;
+}
+.cosmic {
+  color: #fff;
+  font-size: 4rem;
+  font-weight: 500;
+  line-height: inherit;
+  text-decoration: none;
+  white-space: nowrap;
+  font-family: 'Ubuntu', sans-serif;
+}
+::-webkit-scrollbar {
+  width: 8px; 
+}
+::-webkit-scrollbar-track {
+  background: #281e4a; 
+}
+::-webkit-scrollbar-thumb {
+  background: #373867; 
+  border-radius: 4px; 
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #18084a; 
+}
+.anav {
+  color: #9768ba;
+  font-size: 1.6rem;
+  font-weight: 500;
+  line-height: inherit;
+  text-decoration: none;
+  white-space: nowrap;
+  font-family: 'Ubuntu', sans-serif;
+  padding: .8rem;
+}
+.searchBar {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 500px;
+  height: 50px;
+  border-radius: 25px;
+  background: #fff;
+  color: #101062;
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.08);
+  font-family: 'DM Sans', sans-serif;
 }
