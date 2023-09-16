@@ -78,8 +78,8 @@ button:focus-visible {
   flex-wrap: wrap;
   align-items: center;
   padding: 0.5rem 1rem;
-  font-family: 'Ubuntu', sans-serif;
-  color:#d0c4d3;
+  background-color: darkgray;
+  opacity: 0.8;
   font-size: 1.6rem;
 }
 .cosmic {
