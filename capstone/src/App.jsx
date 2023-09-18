@@ -9,9 +9,10 @@ import { NewUserForm } from "./components/NewUserForm";
 import { Routes, Route } from "react-router-dom";
 
 function App() {
-  const [isLoggedIn, setLoggedIn] = useState(!!localStorage.getItem('authToken'));
+  const [isLoggedIn, setLoggedIn] = useState(!!localStorage.getItem("authToken"));
   const [selectedProductId, setSelectedProductId] = useState(null);
-  
+  const [search, setSearch] = useState(""); 
+
   const handleSelectProduct = (productId) => {
     setSelectedProductId(productId);
   };
@@ -19,20 +20,15 @@ function App() {
   return (
     <>
       <div>
-      <div id="main-section">
-          <NavBar isLoggedIn={isLoggedIn} handleLogin={setLoggedIn} />
-          <div />
-          <Routes>
-            <Route path="/allproducts" element={<AllProducts setSelectedProductId={handleSelectProduct} />} />
-            <Route path="/userlogin" element={<UserLogin onLogin={setLoggedIn} />} />
-            <Route path="/newuserform" element={<NewUserForm />} />
-</Routes>
-
-        </div>
+        <NavBar isLoggedIn={isLoggedIn} handleLogin={setLoggedIn} setSearch={setSearch} style={{}}/>
+        <Routes>
+          <Route path="/allproducts" element={<AllProducts setSelectedProductId={handleSelectProduct} search={search} />} />
+          {/* Pass the search state to AllProducts */}
+          <Route path="/userlogin" element={<UserLogin onLogin={setLoggedIn} />} />
+          <Route path="/newuserform" element={<NewUserForm />} />
+        </Routes>
       </div>
-
     </>
-  )
+  );
 }
-
-export default App
+export default App;

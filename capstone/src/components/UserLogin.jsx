@@ -8,58 +8,56 @@ const UserLogin = ({ onLogin }) => {
   const [error, setError] = useState(null);
   const navigate = useNavigate();
 
-  const BASE_URL = `https://fakestoreapi.com/products`;
+  const BASE_URL = `https://fakestoreapi.com`;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError(null);
-
+  
     if (!username || !password) {
       setError('Please sign in.');
       return;
     }
-
+  
     const login = async () => {
       try {
-        const response = await fetch(`${BASE_URL}/users/login`, {
+        const response = await fetch(`${BASE_URL}/auth/login`, {
           method: 'POST',
+          body: JSON.stringify({
+            username: username,
+            password: password,
+          }),
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify({
-            user: {
-              username: username,
-              password: password,
-            },
-          }),
         });
-
+  
         console.log('Response:', response);
-
-        const result = await response.json();
-
+  
         if (response.ok) {
-          if (result.data && result.data.token) {
-            const token = result.data.token;
+          const result = await response.json();
+  
+          if (result.token) {
+            const token = result.token;
             localStorage.setItem('Token', token);
-            localStorage.setItem('username', result.data.username);
-
-            console.log(token);
             onLogin();
-
-            navigate('/profile');
+            navigate('/allproducts');
+          } else {
+            setError('Invalid response data.');
           }
         } else {
-          setError(result.error ? result.error : 'Invalid username or password.');
+          const errorResponse = await response.json();
+          setError(errorResponse.error ? errorResponse.error : 'Invalid username or password.');
         }
       } catch (err) {
         console.error(err);
         setError('An error occurred while logging in.');
       }
     };
-
+  
     await login();
   };
+  
 
   return (
     <div>

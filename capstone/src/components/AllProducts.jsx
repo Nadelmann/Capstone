@@ -32,16 +32,9 @@ export default function AllProducts({ setSelectedProductId }) {
     });
 
     return (
-        <div>
+        <div style={{ marginLeft: 45, marginRight: 45 }}>
             <MDBContainer>
-            <input className="searchBar"
-                style={{ width: "50%", padding: "5px", margin: "15px" }}
-                type="text"
-                placeholder="   Search..."
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
-            />
-            <div />
+            <div style={{padding: 10 }}/>
             <MDBRow>
             {filteredProducts.map((product, index) => (
                 <MDBCol key={`${product._id}-${index}`} md="4">
