@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import setSelectedProduct from './ProductDetails';
 
 export default function ProductCard({ product, setSelectedProductId }) {
 

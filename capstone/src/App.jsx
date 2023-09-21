@@ -1,13 +1,12 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { LinearProgress } from '@mui/material';
-import { useQuery } from 'react-query';
 import { Drawer } from '@mui/material';
 import Cart from './components/Cart';
 import AllProducts from './components/AllProducts';
 import NavBar from './components/NavBar';
 import UserLogin from './components/UserLogin';
 import NewUserForm from './components/NewUserForm';
-import { Routes, Route} from 'react-router-dom';
+import { Routes, Route, } from 'react-router-dom';
 import ProductDetails from './components/ProductDetails'; // Import the ProductDetails component
 
 function App() {
@@ -16,14 +15,28 @@ function App() {
   const [cartOpen, setCartOpen] = useState(false);
   const [cartItems, setCartItems] = useState([]);
   const [selectedProduct, setSelectedProduct] = useState(null); // Track the selected product
+  const [products, setProducts] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+
 
   // Function to fetch product data
   async function getProducts() {
-    const response = await fetch('https://fakestoreapi.com/products');
-    return response.json();
+    try {
+      const response = await fetch('https://fakestoreapi.com/products');
+      const data = await response.json();
+      setProducts(data);
+      setIsLoading(false);
+    } catch (error) {
+      setError(error);
+      setIsLoading(false);
+    }
   }
 
-  const { isLoading, error } = useQuery('products', getProducts);
+  useEffect(() => {
+    getProducts();
+  }, []);
 
   // Function to handle adding items to the cart
   function handleAddToCart(clickedItem) {
@@ -63,28 +76,24 @@ function App() {
     setSelectedProduct(null);
   }
 
-  // Render the application
   if (isLoading) return <LinearProgress />;
   if (error) return <div>Something went wrong ...</div>;
 
   return (
-    <>
+    <div>
+      <Drawer anchor="right" open={cartOpen} onClose={() => setCartOpen(false)}>
+        <Cart cartItems={cartItems} addToCart={handleAddToCart} removeFromCart={handleRemoveFromCart} />
+      </Drawer>
       <div>
-        <Drawer anchor="right" open={cartOpen} onClose={() => setCartOpen(false)}>
-          <Cart cartItems={cartItems} addToCart={handleAddToCart} removeFromCart={handleRemoveFromCart} />
-        </Drawer>
-        <div>
-          <NavBar isLoggedIn={isLoggedIn} handleLogin={setLoggedIn} setSearch={setSearch} style={{}} />
-          <Routes>
-            <Route path="/allproducts" element={<AllProducts setSelectedProduct={openProductDetails} search={search} />} />
-            {/* Pass the search state to AllProducts */}
-            <Route path="/userlogin" element={<UserLogin onLogin={setLoggedIn} />} />
-            <Route path="/newuserform" element={<NewUserForm />} />
-            <Route path="/productdetails" element={<ProductDetails selectedProduct={selectedProduct} onClose={closeProductDetails} />} />
-          </Routes>
-        </div>
+        <NavBar isLoggedIn={isLoggedIn} handleLogin={setLoggedIn} setSearch={setSearch} style={{}} />
+        <Routes>
+          <Route path="/allproducts" element={<AllProducts products={products} setSelectedProduct={openProductDetails} search={search} />} />
+          <Route path="/userlogin" element={<UserLogin onLogin={setLoggedIn} />} />
+          <Route path="/newuserform" element={<NewUserForm />} />
+          <Route path="/productdetails" element={<ProductDetails selectedProduct={selectedProduct} onClose={closeProductDetails} />} />
+        </Routes>
       </div>
-    </>
+    </div>
   );
 }
 

@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 
 
-export function NavBar() {
+export default function NavBar() {
 
   const [search, setSearch] = useState("");
 

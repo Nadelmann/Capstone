@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./NewUserForm.css";
 
-export function NewUserForm() {
+export default function NewUserForm() {
   const [error, setError] = useState(null);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');

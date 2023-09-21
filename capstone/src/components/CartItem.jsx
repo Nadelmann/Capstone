@@ -1,4 +1,3 @@
-import Button from '@mui/material/Button';
 import './Cart.css';
 import PropTypes from 'prop-types';
 
@@ -11,23 +10,19 @@ const CartItem = ({ item, addToCart, removeFromCart }) => (
         <p>Total: ${(item.amount * item.price).toFixed(2)}</p>
       </div>
       <div className='buttons'>
-        <Button
-          size='small'
-          disableElevation
-          variant='contained'
+        <button
+          className='small-button'
           onClick={() => removeFromCart(item.id)}
         >
           -
-        </Button>
+        </button>
         <p>{item.amount}</p>
-        <Button
-          size='small'
-          disableElevation
-          variant='contained'
+        <button
+          className='small-button'
           onClick={() => addToCart(item)}
         >
           +
-        </Button>
+        </button>
       </div>
     </div>
     <img src={item.image} alt={item.title} />
