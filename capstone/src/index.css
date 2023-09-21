@@ -31,6 +31,11 @@ h1 {
   font-size: 3.2em;
   line-height: 1.1;
 }
+h2 {
+  font-size: 2.4em;
+  line-height: 1.1;
+  font-family: "Ubuntu", sans-serif;
+}
 
 .detailsButton {
   border: none;
@@ -68,26 +73,31 @@ button:focus-visible {
   align-items: center;
   font-family: 'DM Sans', sans-serif;
 }
-.navbarset, .nav {
+.nav {
   display: flex;
-  flex-direction: row;
+  flex-flow: row nowrap;
   align-items: center;
-  padding: .3rem 1rem;
-  background-color: darkgray;
-  opacity: 0.8;
+  padding-left: flex-start;
   font-size: 1.6rem;
   min-width: 320px;
-  margin: 0 ;
-  box-sizing: content-box;
+  max-width: 3000px;
+  justify-content: stretch;
+  background: rgba(173, 169, 169, 0.6);
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+.navbarset{
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  padding-left: flex-start;
 }
 .navbarset a {
   float: left;
   font-size: 30px;
-  color: #674185;
+  color: #4c3061;
   text-align: center;
   text-decoration: none;
   font-family: 'Ubuntu', sans-serif;
-  margin-left: 5rem;
 }
 .cosmic {
   color: #fff;
@@ -97,6 +107,8 @@ button:focus-visible {
   text-decoration: none;
   white-space: nowrap;
   font-family: 'Ubuntu', sans-serif;
+  padding-right: 10rem;
+  padding-left: 1rem
 }
 ::-webkit-scrollbar {
   width: 8px; 
@@ -112,12 +124,11 @@ button:focus-visible {
   background: #18084a; 
 }
 .anav {
-  color: #674185;
+  color: #4c3061;;
   font-size: 1.6rem;
   font-weight: 500;
   line-height: inherit;
   text-decoration: none;
-  white-space: nowrap;
   font-family: 'Ubuntu', sans-serif;
   padding: .8rem;
 }
@@ -137,33 +148,41 @@ button:focus-visible {
   font-family: 'DM Sans', sans-serif;
 }
 .dropdown .dropbtn {
-  font-size: 16px;
+  align-content: center;
+  justify-content: center;
   border: none;
   outline: none;
-  color: white;
+  color: #4c3061;
   padding: 14px 16px;
   background-color: inherit;
-  font-family: inherit; 
-  margin: 0; 
+  font-family: 'Ubuntu', sans-serif;
   overflow:visible;
+  font-weight: 500;
+}
+.navspace{
+  padding-right: 25rem;
 }
 .navbar a:hover, .dropdown:hover .dropbtn {
   background-color: #674185;
+  border-radius: 1rem;
 }
 
 .dropdown-content {
   display: none;
-  position:fixed;
+  position: fixed;
   background-color: #f9f9f9;
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   opacity: 1;
+  border-radius: 1rem;
+  align-content: center;
+  justify-content: center;
 }
 
 
 .dropdown-content a {
   float: none;
-  color: #674185;
+  color: #4c3061;
   padding: 12px 16px;
   text-decoration: none;
   display: block;

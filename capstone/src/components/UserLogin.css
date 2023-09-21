@@ -1,0 +1,25 @@
+.login-container {
+    display: flex;
+    margin: 6rem;
+    justify-content: center;
+    align-items: center;
+    font-family: 'DM Sans', sans-serif;
+    background-color: white;
+    border-radius: 1rem;
+  }
+  .form{
+    display: flex;
+    font-family: 'Ubuntu', sans-serif;
+    color: #674185;
+    margin: 2rem;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+  .input{
+    margin: 1rem;
+    padding: 1rem;
+    border-radius: 1rem;
+    border: 1px solid #674185;
+    font-family: 'Ubuntu', sans-serif;
+    color: #674185;
+  }

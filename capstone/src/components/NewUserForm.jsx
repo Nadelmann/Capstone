@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "./NewUserForm.css";
 
 export function NewUserForm() {
   const [error, setError] = useState(null);
@@ -61,12 +62,12 @@ export function NewUserForm() {
   }
 
   return (
-    <>
-      <h2 className="heading">Sign Up</h2>
-
+    <div className="NewForm">
+      <h2 style={{fontWeight:"bolder"}}>Sign Up</h2>
+      <br />
       {error && <p>{error}</p>}
       <form onSubmit={handleSubmit}>
-
+        <br />  
         <label>
           Username: <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} />
         </label>{" "}
@@ -76,7 +77,7 @@ export function NewUserForm() {
           Password: <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
         </label>{" "}
         <br />
-
+        <br />
         <label>
           Email: <input type="text" value={email} onChange={(e) => setEmail(e.target.value)} />
         </label>{" "}
@@ -91,7 +92,7 @@ export function NewUserForm() {
           Last Name: <input type="text" value={lastName} onChange={(e) => setLastName(e.target.value)} />
         </label>{" "}
         <br />
-
+        <br />
         <label>
           Address: <br />
           City: <input type="text" value={address.city} onChange={(e) => setAddress({ ...address, city: e.target.value })} />
@@ -108,6 +109,6 @@ export function NewUserForm() {
 
         <button type="submit">Submit</button>
       </form>
-    </>
+    </div>
   );
 }

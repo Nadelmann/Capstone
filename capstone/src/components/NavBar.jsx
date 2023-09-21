@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
 
+
 export function NavBar() {
 
   const [search, setSearch] = useState("");
@@ -22,6 +23,7 @@ export function NavBar() {
         <Link className="a" to="#">Link 3</Link> 
         <Link className="a" to="#">Link 4</Link>
         </div>
+        <div className="navspace" />
         </div>
                 <input className="searchBar"
                 style={{ width: "50%", padding: "5px", margin: "15px" }}

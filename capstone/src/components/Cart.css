@@ -1,0 +1,12 @@
+.wrapper{
+    width: 500px;
+  padding: 20px;
+  font-family: 'Ubuntu', sans-serif;
+  display: flex;
+  justify-content: space-between;
+}
+.information,
+.buttons {
+  display: flex;
+  justify-content: space-between;
+}

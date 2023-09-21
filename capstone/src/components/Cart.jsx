@@ -1,0 +1,33 @@
+import CartItem from './CartItem'; 
+import './Cart.css';
+import PropTypes from 'prop-types'; 
+
+const Cart = ({ cartItems, addToCart, removeFromCart }) => {
+  const calculateTotal = (items) =>
+    items.reduce((ack, item) => ack + item.amount * item.price, 0);
+
+  return (
+    <div className='wrapper'>
+      <h2>Your Shopping Cart</h2>
+      {cartItems.length === 0 ? <p>No items in cart.</p> : null}
+      {cartItems.map((item) => (
+        <CartItem
+          key={item.id}
+          item={item}
+          addToCart={addToCart}
+          removeFromCart={removeFromCart}
+        />
+      ))}
+      <h2>Total: ${calculateTotal(cartItems).toFixed(2)}</h2>
+    </div>
+  );
+};
+
+
+Cart.propTypes = {
+  cartItems: PropTypes.array.isRequired, 
+  addToCart: PropTypes.func.isRequired,   
+  removeFromCart: PropTypes.func.isRequired, 
+};
+
+export default Cart;
