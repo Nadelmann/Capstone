@@ -4,7 +4,7 @@
     align-items: center;
     justify-content: center;
     background-color: #f2f2f2;
-    border-radius: 10px;
+    border-radius: 1rem;
     box-shadow: 0 0 10px 0 rgba(0,0,0,0.2);
     padding: 4rem;
     margin: 2rem;
@@ -19,4 +19,38 @@ label{
     color: #674185;
     text-align: center;
     font-weight: bolder;
+    padding: 1rem;
+    border-radius: 1rem;
 }
+form{
+    display: flex;
+    font-family: 'Ubuntu', sans-serif;
+    color: #674185;
+    margin: 2rem;
+    flex-direction: column;
+    justify-content: flex-start;
+    border-radius: 1rem;
+    padding: 1rem;
+  }
+
+input{
+    margin: 1rem;
+    padding: 1rem;
+    border-radius: 1rem;
+    border: 1px solid #674185;
+    font-family: 'Ubuntu', sans-serif;
+    color: #674185;
+}
+.submitbutton{
+    border: none;
+    padding: 0.6em 1.2em;
+    font-size: .8rem;
+    font-weight: 200;
+    background: linear-gradient(to bottom, #101062, #8c6194); 
+    color: white;
+    cursor: pointer;
+    transition: background 0.25s, color 0.25s;
+    font-family: 'DM Sans', sans-serif;
+    border-radius: 1rem;
+    margin: 1rem;
+  }

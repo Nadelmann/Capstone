@@ -1,3 +1,4 @@
+
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.4;
@@ -47,6 +48,8 @@ h2 {
   cursor: pointer;
   transition: background 0.25s, color 0.25s;
   font-family: 'DM Sans', sans-serif;
+  border-radius: 1rem;
+  margin: 1rem;
 }
 button:hover {
    opacity: 0.7; 
@@ -65,13 +68,10 @@ button:focus-visible {
 .card-container {
   display: flex;
   flex-direction: column;
-  flex: 0 0 100%;
-  max-width: auto;
-  padding-right: .2rem;
-  padding-left: .2rem;
   justify-content: center;
   align-items: center;
-  font-family: 'DM Sans', sans-serif;
+  font-family: 'ubuntu', sans-serif;
+  text-align: center;
 }
 .nav {
   display: flex;
@@ -83,13 +83,14 @@ button:focus-visible {
   max-width: 3000px;
   justify-content: stretch;
   background: rgba(173, 169, 169, 0.6);
-box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  z-index: 5;
+  position: sticky;
 }
 .navbarset{
   display: flex;
   flex-flow: row nowrap;
   align-items: center;
-  padding-left: flex-start;
 }
 .navbarset a {
   float: left;
@@ -133,7 +134,6 @@ box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   padding: .8rem;
 }
 .searchBar {
-
   flex-direction: row;
   justify-content: center;
   align-items: center;

@@ -1,49 +1,45 @@
 import PropTypes from 'prop-types';
-import setSelectedProduct from './ProductDetails';
+import { Link } from 'react-router-dom';
+import { useCart } from './cart-hooks';
 
-export default function ProductCard({ product, setSelectedProductId }) {
+export default function ProductCard({ product }) {
+  const { addToCart, removeFromCart } = useCart();
 
+  const handleAddToCart = () => {
+    addToCart(product); // Call addToCart function with the product
+  };
 
-    const handleDetailsClick = (product) => {
-        console.log("Details button clicked for:", product);
-        setSelectedProduct(product);
+  const handleRemoveFromCart = () => {
+    removeFromCart(product.id); // Call removeFromCart function with productId
     };
 
-    return (
-        <div className="card-container">
-            <div
-                className="card"
-                onClick={() => {
-                    setSelectedProductId(product.id);
-                }}
-            >
-                <h6>{product.title}</h6>
-                <p>Price: ${product.price}</p>
-                <img src={product.image}
-              alt={product.title}
-              className='img-fluid hover-shadow'
-              style={{ alignContent: "center", maxWidth: "100%", height: "auto" }}
-            />
-            <div />
-            <button className="detailsButton"
-                    onClick={() => handleDetailsClick(product)}>
-                    Details
-            </button>
-            </div>
-        </div>
-    );
+  return (
+    <div className="card-container">
+      <div className='card'>
+        <h3>{product.title}</h3>
+        <h5>Price: ${product.price}</h5>
+        <img
+          src={product.image}
+          alt={product.title}
+          style={{ alignContent: "center", maxWidth: "100%", height: "auto", margin:"1rem"}}
+        />
+        <div />
+        <button onClick={() => handleAddToCart(product.id)}>Add to Cart</button>
+        <button onClick={() => handleRemoveFromCart(product.id)}>Remove from Cart</button>
+        <Link to={`/productdetails/${product.id}`} className="detailsButton">
+          Details
+        </Link>
+      </div>
+    </div>
+  );
 }
 
 ProductCard.propTypes = {
-    product: PropTypes.shape({
-        id: PropTypes.number.isRequired,
-        title: PropTypes.string.isRequired,
-        author: PropTypes.shape({
-            username: PropTypes.string.isRequired,
-        }),
-        price: PropTypes.number.isRequired,
-        description: PropTypes.string.isRequired,
-        image: PropTypes.string.isRequired, // Add this line for 'image'
-    }).isRequired,
-    setSelectedProductId: PropTypes.func.isRequired,
+  product: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    title: PropTypes.string.isRequired,
+    price: PropTypes.number.isRequired,
+    description: PropTypes.string.isRequired,
+    image: PropTypes.string.isRequired,
+  }).isRequired,
 };

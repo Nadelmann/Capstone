@@ -1,8 +1,39 @@
-import CartItem from './CartItem'; 
+import { useState } from 'react';
+import CartItem from './CartItem';
 import './Cart.css';
-import PropTypes from 'prop-types'; 
+import PropTypes from 'prop-types';
 
-const Cart = ({ cartItems, addToCart, removeFromCart }) => {
+const Cart = () => {
+  const [cartItems, setCartItems] = useState([]);
+
+  // Function to handle adding items to the cart
+  function handleAddToCart(clickedItem) {
+    setCartItems((prev) => {
+      const isItemInCart = prev.find((item) => item.id === clickedItem.id);
+
+      if (isItemInCart) {
+        return prev.map((item) =>
+          item.id === clickedItem.id ? { ...item, amount: item.amount + 1 } : item
+        );
+      }
+      return [...prev, { ...clickedItem, amount: 1 }];
+    });
+  }
+
+  // Function to handle removing items from the cart
+  function handleRemoveFromCart(id) {
+    setCartItems((prev) =>
+      prev.reduce((ack, item) => {
+        if (item.id === id) {
+          if (item.amount === 1) return ack;
+          return [...ack, { ...item, amount: item.amount - 1 }];
+        } else {
+          return [...ack, item];
+        }
+      }, [])
+    );
+  }
+
   const calculateTotal = (items) =>
     items.reduce((ack, item) => ack + item.amount * item.price, 0);
 
@@ -14,8 +45,8 @@ const Cart = ({ cartItems, addToCart, removeFromCart }) => {
         <CartItem
           key={item.id}
           item={item}
-          addToCart={addToCart}
-          removeFromCart={removeFromCart}
+          addToCart={handleAddToCart}
+          removeFromCart={handleRemoveFromCart}
         />
       ))}
       <h2>Total: ${calculateTotal(cartItems).toFixed(2)}</h2>
@@ -23,11 +54,8 @@ const Cart = ({ cartItems, addToCart, removeFromCart }) => {
   );
 };
 
-
 Cart.propTypes = {
-  cartItems: PropTypes.array.isRequired, 
-  addToCart: PropTypes.func.isRequired,   
-  removeFromCart: PropTypes.func.isRequired, 
+  children: PropTypes.node.isRequired,
 };
 
 export default Cart;

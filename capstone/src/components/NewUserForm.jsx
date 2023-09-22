@@ -95,10 +95,11 @@ export default function NewUserForm() {
         <br />
         <label>
           Address: <br />
-          City: <input type="text" value={address.city} onChange={(e) => setAddress({ ...address, city: e.target.value })} />
-          Street: <input type="text" value={address.street} onChange={(e) => setAddress({ ...address, street: e.target.value })} />
-          Number: <input type="text" value={address.number} onChange={(e) => setAddress({ ...address, number: e.target.value })} />
-          Zipcode: <input type="text" value={address.zipcode} onChange={(e) => setAddress({ ...address, zipcode: e.target.value })} />
+            Street: <input style={{margin: '1rem'}} type="text" value={address.street} onChange={(e) => setAddress({ ...address, street: e.target.value })} />
+          <br />
+          City: <input style={{margin: '1rem'}} type="text" value={address.city} onChange={(e) => setAddress({ ...address, city: e.target.value })} />
+          <br />
+          Zipcode: <input style={{margin: '1rem'}} type="text" value={address.zipcode} onChange={(e) => setAddress({ ...address, zipcode: e.target.value })} />
         </label>{" "}
         <br />
 
@@ -107,7 +108,7 @@ export default function NewUserForm() {
         </label>{" "}
         <br />
 
-        <button type="submit">Submit</button>
+        <button className='submitbutton' type="submit">Submit</button>
       </form>
     </div>
   );
