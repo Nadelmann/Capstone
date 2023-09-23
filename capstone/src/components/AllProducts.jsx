@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import ProductCard from "./Productcard";
 import ProductDetails from "./ProductDetails";
 import { MDBContainer, MDBRow, MDBCol } from "mdbreact";
+import NavBar from "./NavBar";
+
 
 export default function AllProducts() {
   const [products, setProducts] = useState([]);
@@ -37,6 +39,7 @@ export default function AllProducts() {
 
   return (
     <div style={{ marginLeft: 45, marginRight: 45 }}>
+    <NavBar search={search} setSearch={setSearch} />
       <MDBContainer>
         <div style={{ padding: 10 }} />
         <MDBRow>

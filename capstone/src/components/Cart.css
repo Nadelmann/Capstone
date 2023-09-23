@@ -10,3 +10,17 @@
   display: flex;
   justify-content: space-between;
 }
+.ShoppingCart {
+  display: flex;
+  flex-direction: column;
+  background-color: #f2f2f2;
+  border-radius: 1rem;
+  box-shadow: 0 0 10px 0 rgba(0,0,0,0.2);
+  padding: 4rem;
+  margin: 2rem;
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 1.5rem;
+  color: #674185;
+  text-align: left;
+  font-weight: bolder;
+}

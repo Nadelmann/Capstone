@@ -22,7 +22,7 @@ export const CartProvider = ({ children }) => {
         if (response.ok) {
           toast.success('Item has been added/removed from the cart', {
             position: 'top-right',
-            autoClose: 2000, // Auto-close the notification after 2 seconds
+            autoClose: 2000, 
           });
         } else {
           toast.error('Failed to update cart', {

@@ -1,10 +1,8 @@
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import PropTypes from "prop-types";
 
 
-export default function NavBar() {
-
-  const [search, setSearch] = useState("");
+export default function NavBar({ search, setSearch }) {
 
   return (
     <nav className="nav">
@@ -25,14 +23,21 @@ export default function NavBar() {
         </div>
         <div className="navspace" />
         </div>
-                <input className="searchBar"
-                style={{ width: "50%", padding: "5px", margin: "15px" }}
-                type="text"
-                placeholder="   Search..."
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
-            />  
+        <input
+          className="searchBar"
+          style={{ width: "50%", padding: "5px", margin: "15px" }}
+          type="text"
+          placeholder="   Search..."
+          value={search} 
+          onChange={(e) => setSearch(e.target.value)} 
+        />
       </div>    
     </nav>
   );
 }
+
+
+  NavBar.propTypes = {
+    search: PropTypes.string.isRequired, // Validate search prop as a string (isRequired means it must be provided)
+    setSearch: PropTypes.func.isRequired, // Validate setSearch prop as a function (isRequired means it must be provided)
+  };

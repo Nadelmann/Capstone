@@ -38,7 +38,7 @@ const Cart = () => {
     items.reduce((ack, item) => ack + item.amount * item.price, 0);
 
   return (
-    <div className='wrapper'>
+    <div className='ShoppingCart'>
       <h2>Your Shopping Cart</h2>
       {cartItems.length === 0 ? <p>No items in cart.</p> : null}
       {cartItems.map((item) => (
