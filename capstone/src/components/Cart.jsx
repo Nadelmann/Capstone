@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import CartItem from './CartItem';
 import './Cart.css';
-import PropTypes from 'prop-types';
 
 const Cart = () => {
   const [cartItems, setCartItems] = useState([]);
@@ -54,8 +53,5 @@ const Cart = () => {
   );
 };
 
-Cart.propTypes = {
-  children: PropTypes.node.isRequired,
-};
 
 export default Cart;

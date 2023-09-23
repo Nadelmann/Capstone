@@ -6,6 +6,10 @@ import UserLogin from './components/UserLogin';
 import NewUserForm from './components/NewUserForm';
 import ProductDetails from './components/ProductDetails';
 import Cart from './components/Cart';
+import JeweleryProducts from './components/jeweleryProducts';
+import WomensClothingProducts from './components/womensclothing';
+import MensClothingProducts from './components/mensclothing';
+import ElectronicProducts from './components/electronics';
 
 function App() {
   const [isLoggedIn, setLoggedIn] = useState(!!localStorage.getItem('authToken'));
@@ -13,7 +17,6 @@ function App() {
   const [products, setProducts] = useState([]);
   const [error, setError] = useState(null);
 
-  // Function to fetch product data
   async function getProducts() {
     try {
       const response = await fetch('https://fakestoreapi.com/products');
@@ -23,7 +26,7 @@ function App() {
       const data = await response.json();
       setProducts(data);
     } catch (error) {
-      setError(error.message); // Store the error message in state
+      setError(error.message); 
     }
   }
 
@@ -31,18 +34,21 @@ function App() {
     getProducts();
   }, []);
 
-
   return (
     <div>
       <div>
-        <NavBar isLoggedIn={isLoggedIn} handleLogin={setLoggedIn} setSearch={setSearch} style={{}} />
+        <NavBar isLoggedIn={isLoggedIn} handleLogin={setLoggedIn} search={search} setSearch={setSearch} />
         <Routes>
           <Route path="/allproducts" element={<AllProducts products={products} search={search} />} />
           <Route path="/userlogin" element={<UserLogin onLogin={setLoggedIn} />} />
           <Route path="/newuserform" element={<NewUserForm />} />
 
-          {/* Route for displaying ProductDetails */}
           <Route path="/productdetails/:productId" element={<ProductDetails products={products} />} />
+
+          <Route path="/jeweleryproducts" element={<JeweleryProducts />} />
+          <Route path="/womensclothing" element={<WomensClothingProducts />} />
+          <Route path="/mensclothing" element={<MensClothingProducts />} />
+          <Route path="/electronics" element={<ElectronicProducts />} />
 
           <Route path="/cart" element={<Cart />} />
         </Routes>

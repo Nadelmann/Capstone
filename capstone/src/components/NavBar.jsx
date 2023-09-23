@@ -16,10 +16,10 @@ export default function NavBar({ search, setSearch }) {
           <button className="dropbtn">Categories<i className="fa fa-caret-down"></i>
       </button>
       <div className="dropdown-content">
-        <Link className="a" to="#">Link 1</Link>
-        <Link className="a" to="#">Link 2</Link> 
-        <Link className="a" to="#">Link 3</Link> 
-        <Link className="a" to="#">Link 4</Link>
+      <Link className="a" to="/jeweleryproducts">Jewelry</Link>
+        <Link className="a" to="/womensclothing">Womens clothing</Link> 
+        <Link className="a" to="/mensclothing">Mens clothing</Link> 
+        <Link className="a" to="/electronics">Electronics</Link>
         </div>
         <div className="navspace" />
         </div>

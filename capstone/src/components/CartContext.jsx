@@ -7,9 +7,38 @@ export const CartContext = createContext();
 export const CartProvider = ({ children }) => {
   const [cartItems, setCartItems] = useState([]);
 
+  const addNewCart = (userId, products) => {
+    fetch('https://fakestoreapi.com/carts', {
+      method: 'POST',
+      body: JSON.stringify({
+        userId: userId,
+        date: new Date().toISOString(), // Use the current date
+        products: products,
+      }),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          throw new Error('Failed to add a new cart');
+        }
+      })
+      .then((newCart) => {
+        // Handle the response or update the state as needed
+        console.log('New Cart:', newCart);
+      })
+      .catch((error) => {
+        // Handle errors
+        console.error('Error:', error);
+      });
+  };
+
   // Define your fetch operation and provide missing values here
   const updateCart = () => {
-    fetch('https://cors-anywhere.herokuapp.com/https://fakestoreapi.com/carts/7', {
+    fetch('https://fakestoreapi.com/carts/7', {
       method: "PUT",
       body: JSON.stringify({
         userId: 'yourUserId',
@@ -18,6 +47,7 @@ export const CartProvider = ({ children }) => {
       })
     })
       .then((response) => {
+        console.log('Response:', response);
         // Handle response here if needed
         if (response.ok) {
           toast.success('Item has been added/removed from the cart', {
@@ -76,7 +106,7 @@ export const CartProvider = ({ children }) => {
 
 
   return (
-    <CartContext.Provider value={{ cartItems, addToCart, removeFromCart }}>
+    <CartContext.Provider value={{ cartItems, addToCart, removeFromCart, addNewCart }}>
       {children}
     </CartContext.Provider>
   );

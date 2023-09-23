@@ -1,12 +1,10 @@
-import { useState } from "react";
-import ProductCard from "./Productcard";
+import { useState, useEffect } from 'react';
+import ProductCard from "./Productcard"; 
 import ProductDetails from "./ProductDetails";
 import { MDBContainer, MDBRow, MDBCol } from "mdbreact";
-import PropTypes from "prop-types";
 
-
-
-export default function AllProducts({ products }) {
+function MensClothingProducts() { 
+  const [mensClothingProducts, setMensClothingProducts] = useState([]); 
   const [selectedProduct, setSelectedProduct] = useState(null);
 
   const openProductDetails = (product) => {
@@ -19,10 +17,23 @@ export default function AllProducts({ products }) {
 
   const [search] = useState("");
 
-  const filteredProducts = products.filter((product) => {
+  const filteredProducts = mensClothingProducts.filter((product) => { 
     return product.title.toLowerCase().includes(search.toLowerCase());
   });
 
+  useEffect(() => {
+    fetch("https://fakestoreapi.com/products/category/men's clothing") 
+      .then(async (response) => {
+        if (!response.ok) {
+          throw new Error('Failed to fetch products');
+        }
+        const data = await response.json();
+        setMensClothingProducts(data); 
+      })
+      .catch((error) => {
+        console.error(error); 
+      });
+  }, []); 
 
   return (
     <div style={{ marginLeft: 45, marginRight: 45 }}>
@@ -30,7 +41,7 @@ export default function AllProducts({ products }) {
         <div style={{ padding: 10 }} />
         <MDBRow>
           {filteredProducts.map((product, index) => (
-            <MDBCol key={`${product._id}-${index}`} md="4">
+            <MDBCol key={`${product.id}-${index}`} md="4">
               <div style={{ display: "flex", flexDirection: "column" }}>
                 <ProductCard product={product} openProductDetails={openProductDetails} />
               </div>
@@ -53,6 +64,4 @@ export default function AllProducts({ products }) {
   );
 }
 
-AllProducts.propTypes = {
-  products: PropTypes.array.isRequired,
-};
+export default MensClothingProducts;

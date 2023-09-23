@@ -20,18 +20,23 @@ export default function ProductDetails({ products }) {
   };
 
   return (
-    <div>
-      <h2>Selected Product Details</h2>
-      <p>Title: {selectedProduct.title}</p>
-      <p>{selectedProduct.image}</p>
+    <div className='card-container'>
+      <div className='detailscard'>
+      <h2>{selectedProduct.title}</h2>
+      <img
+          src={selectedProduct.image}
+            alt={selectedProduct.title}
+          style={{ maxHeight:"50%", maxWidth:"50%", margin:"2rem"}}
+        />
       <p>Category: {selectedProduct.category}</p>
       <p>Price: ${selectedProduct.price}</p>
       <p>Description: {selectedProduct.description}</p>
-      <button onClick={handleAddToCart}>Add to Cart</button>
-      <button onClick={handleRemoveFromCart}>Remove from Cart</button>
+      <button className='dButton' onClick={handleAddToCart}>Add to Cart</button>
+      <button className='dButton' onClick={handleRemoveFromCart}>Remove from Cart</button>
       <Link to="/allproducts">
-        <button>Back to All Products</button>
+        <button className='dButton'>Back to All Products</button>
       </Link>
+    </div>
     </div>
   );
 }
