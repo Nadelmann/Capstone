@@ -67,36 +67,31 @@ export default function NewUserForm() {
       <br />
       {error && <p>{error}</p>}
       <form onSubmit={handleSubmit}>
-        <br />  
+        <div>
         <label>
           Username: <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} />
         </label>{" "}
-        <br />
-
         <label>
           Password: <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
         </label>{" "}
-        <br />
+        </div> 
         <br />
         <label>
           Email: <input type="text" value={email} onChange={(e) => setEmail(e.target.value)} />
         </label>{" "}
         <br />
-
+        <div>
         <label>
           First Name: <input type="text" value={firstName} onChange={(e) => setFirstName(e.target.value)} />
         </label>{" "}
-        <br />
-
         <label>
           Last Name: <input type="text" value={lastName} onChange={(e) => setLastName(e.target.value)} />
         </label>{" "}
-        <br />
-        <br />
+       </div>
         <label>
           Address: <br />
             Street: <input style={{margin: '1rem'}} type="text" value={address.street} onChange={(e) => setAddress({ ...address, street: e.target.value })} />
-          <br />
+
           City: <input style={{margin: '1rem'}} type="text" value={address.city} onChange={(e) => setAddress({ ...address, city: e.target.value })} />
           <br />
           Zipcode: <input style={{margin: '1rem'}} type="text" value={address.zipcode} onChange={(e) => setAddress({ ...address, zipcode: e.target.value })} />

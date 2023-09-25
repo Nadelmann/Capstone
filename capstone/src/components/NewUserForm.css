@@ -26,17 +26,17 @@ form{
     display: flex;
     font-family: 'Ubuntu', sans-serif;
     color: #674185;
-    margin: 2rem;
+    margin: .5rem;
     flex-direction: column;
-    justify-content: flex-start;
     border-radius: 1rem;
-    padding: 1rem;
+    padding: .5rem;
+    
   }
 
 input{
-    margin: 1rem;
-    padding: 1rem;
-    border-radius: 1rem;
+    margin: .5rem;
+    padding: .5rem;
+    border-radius: .5rem;
     border: 1px solid #674185;
     font-family: 'Ubuntu', sans-serif;
     color: #674185;
@@ -44,8 +44,8 @@ input{
 .submitbutton{
     border: none;
     padding: 0.6em 1.2em;
-    font-size: .8rem;
-    font-weight: 200;
+    font-size: 1rem;
+    font-weight: bolder;
     background: linear-gradient(to bottom, #101062, #8c6194); 
     color: white;
     cursor: pointer;

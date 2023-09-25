@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Routes, Route, useNavigate } from 'react-router-dom';
 import AllProducts from './components/AllProducts';
 import NavBar from './components/NavBar';
 import UserLogin from './components/UserLogin';
@@ -15,7 +15,7 @@ function App() {
   const [isLoggedIn, setLoggedIn] = useState(!!localStorage.getItem('authToken'));
   const [search, setSearch] = useState('');
   const [products, setProducts] = useState([]);
-  const [error, setError] = useState(null);
+  const navigate = useNavigate(); // Add this line
 
   async function getProducts() {
     try {
@@ -26,7 +26,7 @@ function App() {
       const data = await response.json();
       setProducts(data);
     } catch (error) {
-      setError(error.message); 
+      console.error(error.message);
     }
   }
 
@@ -36,24 +36,19 @@ function App() {
 
   return (
     <div>
-      <div>
-        <NavBar isLoggedIn={isLoggedIn} handleLogin={setLoggedIn} search={search} setSearch={setSearch} />
-        <Routes>
-          <Route path="/allproducts" element={<AllProducts products={products} search={search} />} />
-          <Route path="/userlogin" element={<UserLogin onLogin={setLoggedIn} />} />
-          <Route path="/newuserform" element={<NewUserForm />} />
-
-          <Route path="/productdetails/:productId" element={<ProductDetails products={products} />} />
-
-          <Route path="/jeweleryproducts" element={<JeweleryProducts />} />
-          <Route path="/womensclothing" element={<WomensClothingProducts />} />
-          <Route path="/mensclothing" element={<MensClothingProducts />} />
-          <Route path="/electronics" element={<ElectronicProducts />} />
-
-          <Route path="/cart" element={<Cart />} />
-        </Routes>
-      </div>
-      {error && <div>Error: {error}</div>}
+      <NavBar isLoggedIn={isLoggedIn} handleLogin={setLoggedIn} search={search} setSearch={setSearch} />
+      <Routes>
+        <Route path="/" element={<AllProducts products={products} search={search} />} />
+        <Route path="/allproducts" element={<AllProducts products={products} search={search} />} />
+        <Route path="/userlogin" element={<UserLogin onLogin={setLoggedIn} />} />
+        <Route path="/newuserform" element={<NewUserForm />} />
+        <Route path="/productdetails/:productId" element={<ProductDetails products={products} />} />
+        <Route path="/jeweleryproducts" element={<JeweleryProducts />} />
+        <Route path="/womensclothing" element={<WomensClothingProducts />} />
+        <Route path="/mensclothing" element={<MensClothingProducts />} />
+        <Route path="/electronics" element={<ElectronicProducts />} />
+        <Route path="/cart" element={<Cart />} />
+      </Routes>
     </div>
   );
 }

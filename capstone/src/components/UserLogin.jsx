@@ -62,7 +62,7 @@ const UserLogin = ({ onLogin }) => {
 
   return (   
     <div className='login-container'>
-    <h2 style={{color:'rgb(82, 82, 136)' }}>Login:</h2>
+    <h2 style={{color:'rgb(82, 82, 136)', fontWeight:'bolder'}}>Login:</h2>
       {error && <p>{error.message}</p>}
       <div className='form'>
       <form onSubmit={handleSubmit}>
