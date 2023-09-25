@@ -6,7 +6,7 @@ import PropTypes from "prop-types";
 
 
 
-export default function AllProducts({ products }) {
+export default function AllProducts({ products, search }) {
   const [selectedProduct, setSelectedProduct] = useState(null);
 
   const openProductDetails = (product) => {
@@ -17,15 +17,19 @@ export default function AllProducts({ products }) {
     setSelectedProduct(null);
   };
 
-  const [search] = useState("");
-
   const filteredProducts = products.filter((product) => {
-    return product.title.toLowerCase().includes(search.toLowerCase());
+    // Check if the search term is present in title, description, or category
+    const searchTerm = search.toLowerCase();
+    return (
+      product.title.toLowerCase().includes(searchTerm) ||
+      product.description.toLowerCase().includes(searchTerm) ||
+      product.category.toLowerCase().includes(searchTerm)
+    );
   });
 
 
   return (
-    <div style={{ marginLeft: 45, marginRight: 45 }}>
+    <div>
       <MDBContainer>
         <div style={{ padding: 10 }} />
         <MDBRow>
@@ -55,4 +59,6 @@ export default function AllProducts({ products }) {
 
 AllProducts.propTypes = {
   products: PropTypes.array.isRequired,
+  search: PropTypes.string.isRequired,
+  setSearch: PropTypes.func.isRequired,
 };

@@ -5,7 +5,7 @@ import { CartContext } from './CartContext';
 
 const Cart = () => {
 
-  const { cartItems, removeFromCart, addToCart } = useContext(CartContext);
+  const { cartItems } = useContext(CartContext);
 
   const calculateTotal = (items) =>
     items.reduce((ack, item) => ack + item.amount * item.price, 0);
@@ -13,6 +13,7 @@ const Cart = () => {
   return (
     <div className='ShoppingCart'>
       <h2>Your Shopping Cart</h2>
+      <br />
       {cartItems.length === 0 ? <p>No items in cart.</p> : null}
       {cartItems.map((item) => (
         <CartItem

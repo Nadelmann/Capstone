@@ -16,15 +16,11 @@
 }
 
 body {
-
-  display: flex;
-
-  min-width: 320px;
-  min-height: 100vh;
   background-image: url('https://earthsky.org/upl/gravity_forms/6-d184048789a60d766a02a8e43117298b/2022/08/White-desert-1.jpg');
     background-size: cover; 
     background-repeat: no-repeat; 
     background-attachment: fixed;
+    padding-bottom: 22rem;
 }
 
 h2 {
@@ -62,14 +58,12 @@ button:hover {
   text-align: center;
 }
 .nav {
-  display: flex;
-  flex-flow: row nowrap;
+  display: flex;  
   align-items: center;
   padding-left: flex-start;
   font-size: 1.6rem;
   min-width: 320px;
   max-width: 3000px;
-  justify-content: stretch;
   background: rgba(173, 169, 169, 0.6);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   z-index: 5;

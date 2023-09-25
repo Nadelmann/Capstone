@@ -1,9 +1,9 @@
 .login-container {
     display: flex;
-    margin: 6rem;
+    margin: 6rem 8rem;
     justify-content: center;
     align-items: center;
-    font-family: 'DM Sans', sans-serif;
+    font-family: 'ubuntu', sans-serif;
     background-color: white;
     border-radius: 1rem;
   }

@@ -10,7 +10,7 @@ export default function ProductCard({ product }) {
   };
 
   const handleRemoveFromCart = () => {
-    removeFromCart(product.id); // Call removeFromCart function with productId
+    removeFromCart(product); // Call removeFromCart function with productId
     };
 
   return (
@@ -25,7 +25,7 @@ export default function ProductCard({ product }) {
         />
         <div />
         <button className="dButton" onClick={() => handleAddToCart(product.id)}>Add to Cart</button>
-        <button className="dButton" onClick={() => handleRemoveFromCart(product.id)}>Remove from Cart</button>
+        <button className="dButton" onClick={() => handleRemoveFromCart(product)}>Remove from Cart</button>
         <Link to={`/productdetails/${product.id}`} className="dButton">
           Details
         </Link>
