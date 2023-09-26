@@ -1,13 +1,27 @@
+@media screen and (min-width: 768px) {
+  .card {
+    width: 50%; 
+    background-attachment: local;
+  }
+}
 
+@media screen and (min-width: 1024px) {
+  .card {
+    width: 33%; 
+    
+  }
+}
 
 #root {
-  align-items: center;
-  padding-top: 1.8rem;
-  text-align: center;
+  align-content: center;
+  justify-content: center;
+  padding-top: 1.5rem;
+  width: 100%;
 }
 
 .card {
-  padding: 1em;
+  padding: 1.5rem;
+  width: 100%;
 }
 
 .read-the-docs {

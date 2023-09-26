@@ -1,3 +1,4 @@
+
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.4;
@@ -15,79 +16,71 @@
 }
 
 body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-  font-family: Roboto, Helvetica, Arial, sans-serif;
   background-image: url('https://earthsky.org/upl/gravity_forms/6-d184048789a60d766a02a8e43117298b/2022/08/White-desert-1.jpg');
     background-size: cover; 
     background-repeat: no-repeat; 
     background-attachment: fixed;
+    padding-bottom: 22rem;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+h2 {
+  font-weight: bolder;
+  font-family: "Ubuntu", sans-serif;
 }
 
-.detailsButton {
+.dButton {
   border: none;
   padding: 0.6em 1.2em;
-  font-size: .8rem;
+  font-size: 1.4rem;
   font-weight: 200;
   background: linear-gradient(to bottom, #101062, #8c6194); 
   color: white;
   cursor: pointer;
   transition: background 0.25s, color 0.25s;
   font-family: 'DM Sans', sans-serif;
+  border-radius: 1rem;
+  margin: .5rem;
 }
 button:hover {
    opacity: 0.7; 
 }
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
 
 .row {
   display: flex;
-  margin-right: -15px;
-  margin-left: -15px;
   row-gap: 1rem;
 }
 .card-container {
   display: flex;
   flex-direction: column;
-  flex: 0 0 100%;
-  max-width: auto;
-  padding-right: .2rem;
-  padding-left: .2rem;
   justify-content: center;
   align-items: center;
-  font-family: 'DM Sans', sans-serif;
+  font-family: 'ubuntu', sans-serif;
+  text-align: center;
 }
-.navbarset, .nav {
-  display: flex;
-  flex-direction: row;
+.nav {
+  display: flex;  
   align-items: center;
-  padding: .3rem 1rem;
-  background-color: darkgray;
-  opacity: 0.8;
+  padding-left: flex-start;
   font-size: 1.6rem;
   min-width: 320px;
-  margin: 0 ;
-  box-sizing: content-box;
+  max-width: 3000px;
+  background: rgba(173, 169, 169, 0.6);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  z-index: 5;
+  position: sticky;
+}
+.navbarset{
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
 }
 .navbarset a {
   float: left;
   font-size: 30px;
-  color: #674185;
+  color: #4c3061;
   text-align: center;
   text-decoration: none;
   font-family: 'Ubuntu', sans-serif;
-  margin-left: 5rem;
 }
 .cosmic {
   color: #fff;
@@ -97,32 +90,32 @@ button:focus-visible {
   text-decoration: none;
   white-space: nowrap;
   font-family: 'Ubuntu', sans-serif;
+  padding-right: 10rem;
+  padding-left: 1rem
 }
 ::-webkit-scrollbar {
-  width: 8px; 
+  width: 20px; 
 }
 ::-webkit-scrollbar-track {
-  background: #281e4a; 
+  background: hsl(264, 75%, 21%); 
 }
 ::-webkit-scrollbar-thumb {
-  background: #373867; 
-  border-radius: 4px; 
+  background: #242570; 
+  border-radius: 6px; 
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #18084a; 
+  background: #750195; 
 }
 .anav {
-  color: #674185;
+  color: #4c3061;;
   font-size: 1.6rem;
   font-weight: 500;
   line-height: inherit;
   text-decoration: none;
-  white-space: nowrap;
   font-family: 'Ubuntu', sans-serif;
   padding: .8rem;
 }
 .searchBar {
-
   flex-direction: row;
   justify-content: center;
   align-items: center;
@@ -137,33 +130,41 @@ button:focus-visible {
   font-family: 'DM Sans', sans-serif;
 }
 .dropdown .dropbtn {
-  font-size: 16px;
+  align-content: center;
+  justify-content: center;
   border: none;
   outline: none;
-  color: white;
+  color: #4c3061;
   padding: 14px 16px;
   background-color: inherit;
-  font-family: inherit; 
-  margin: 0; 
+  font-family: 'Ubuntu', sans-serif;
   overflow:visible;
+  font-weight: 500;
+}
+.navspace{
+  padding-right: 15rem;
 }
 .navbar a:hover, .dropdown:hover .dropbtn {
   background-color: #674185;
+  border-radius: 1rem;
 }
 
 .dropdown-content {
   display: none;
-  position:fixed;
+  position: fixed;
   background-color: #f9f9f9;
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   opacity: 1;
+  border-radius: 1rem;
+  align-content: center;
+  justify-content: center;
 }
 
 
 .dropdown-content a {
   float: none;
-  color: #674185;
+  color: #4c3061;
   padding: 12px 16px;
   text-decoration: none;
   display: block;
@@ -176,4 +177,22 @@ button:focus-visible {
 
 .dropdown:hover .dropdown-content {
   display: block;
+}
+.detailscard{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: 'ubuntu', sans-serif;
+  text-align: center;
+  background-color: white;
+  border-radius: 1rem;
+  box-shadow: 0 0 10px 0 rgba(0,0,0,0.2);
+  padding: 4rem;
+  margin: 2rem;
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 1.5rem;
+  color: #674185;
+  text-align: left;
+  font-weight: bolder;
 }

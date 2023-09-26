@@ -1,6 +1,7 @@
 import { useState } from "react";
+import "./NewUserForm.css";
 
-export function NewUserForm() {
+export default function NewUserForm() {
   const [error, setError] = useState(null);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -61,43 +62,39 @@ export function NewUserForm() {
   }
 
   return (
-    <>
-      <h2 className="heading">Sign Up</h2>
-
+    <div className="NewForm">
+      <h2 style={{fontWeight:"bolder"}}>Sign Up</h2>
+      <br />
       {error && <p>{error}</p>}
       <form onSubmit={handleSubmit}>
-
+        <div>
         <label>
           Username: <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} />
         </label>{" "}
-        <br />
-
         <label>
           Password: <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
         </label>{" "}
+        </div> 
         <br />
-
         <label>
           Email: <input type="text" value={email} onChange={(e) => setEmail(e.target.value)} />
         </label>{" "}
         <br />
-
+        <div>
         <label>
           First Name: <input type="text" value={firstName} onChange={(e) => setFirstName(e.target.value)} />
         </label>{" "}
-        <br />
-
         <label>
           Last Name: <input type="text" value={lastName} onChange={(e) => setLastName(e.target.value)} />
         </label>{" "}
-        <br />
-
+       </div>
         <label>
           Address: <br />
-          City: <input type="text" value={address.city} onChange={(e) => setAddress({ ...address, city: e.target.value })} />
-          Street: <input type="text" value={address.street} onChange={(e) => setAddress({ ...address, street: e.target.value })} />
-          Number: <input type="text" value={address.number} onChange={(e) => setAddress({ ...address, number: e.target.value })} />
-          Zipcode: <input type="text" value={address.zipcode} onChange={(e) => setAddress({ ...address, zipcode: e.target.value })} />
+            Street: <input style={{margin: '1rem'}} type="text" value={address.street} onChange={(e) => setAddress({ ...address, street: e.target.value })} />
+
+          City: <input style={{margin: '1rem'}} type="text" value={address.city} onChange={(e) => setAddress({ ...address, city: e.target.value })} />
+          <br />
+          Zipcode: <input style={{margin: '1rem'}} type="text" value={address.zipcode} onChange={(e) => setAddress({ ...address, zipcode: e.target.value })} />
         </label>{" "}
         <br />
 
@@ -106,8 +103,8 @@ export function NewUserForm() {
         </label>{" "}
         <br />
 
-        <button type="submit">Submit</button>
+        <button className='submitbutton' type="submit">Submit</button>
       </form>
-    </>
+    </div>
   );
 }

@@ -1,34 +1,58 @@
-import "bootstrap/dist/css/bootstrap.min.css";
-import "bootstrap/dist/js/bootstrap.bundle.min.js";
-import './App.css'
-import { NavBar } from "./components/NavBar";
-import AllProducts from "./components/AllProducts";
-import UserLogin from "./components/UserLogin";
-import { useState } from "react";
-import { NewUserForm } from "./components/NewUserForm";
-import { Routes, Route } from "react-router-dom";
+import { useState, useEffect } from 'react';
+import { Routes, Route } from 'react-router-dom';
+import AllProducts from './components/AllProducts';
+import NavBar from './components/NavBar';
+import UserLogin from './components/UserLogin';
+import NewUserForm from './components/NewUserForm';
+import ProductDetails from './components/ProductDetails';
+import Cart from './components/Cart';
+import JeweleryProducts from './components/jeweleryProducts';
+import WomensClothingProducts from './components/womensclothing';
+import MensClothingProducts from './components/mensclothing';
+import ElectronicProducts from './components/electronics';
 
 function App() {
-  const [isLoggedIn, setLoggedIn] = useState(!!localStorage.getItem("authToken"));
-  const [selectedProductId, setSelectedProductId] = useState(null);
-  const [search, setSearch] = useState(""); 
+  const [isLoggedIn, setLoggedIn] = useState(!!localStorage.getItem('authToken'));
+  const [search, setSearch] = useState('');
+  const [products, setProducts] = useState([]);
 
-  const handleSelectProduct = (productId) => {
-    setSelectedProductId(productId);
-  };
+
+  async function getProducts() {
+    try {
+      const response = await fetch('https://fakestoreapi.com/products');
+      if (!response.ok) {
+        throw new Error('Failed to fetch products');
+      }
+      const data = await response.json();
+      setProducts(data);
+    } catch (error) {
+      console.error(error.message);
+    }
+  }
+
+  useEffect(() => {
+    getProducts();
+  }, []);
 
   return (
     <>
-      <div>
-        <NavBar isLoggedIn={isLoggedIn} handleLogin={setLoggedIn} setSearch={setSearch} style={{}}/>
-        <Routes>
-          <Route path="/allproducts" element={<AllProducts setSelectedProductId={handleSelectProduct} search={search} />} />
-          {/* Pass the search state to AllProducts */}
-          <Route path="/userlogin" element={<UserLogin onLogin={setLoggedIn} />} />
-          <Route path="/newuserform" element={<NewUserForm />} />
-        </Routes>
+    <div className="App">
+      <NavBar isLoggedIn={isLoggedIn} handleLogin={setLoggedIn} search={search} setSearch={setSearch} />
+      <Routes>
+        <Route path="/" element={<AllProducts products={products} search={search} />} />
+        <Route path="/allproducts" element={<AllProducts products={products} search={search} />} />
+        <Route path="/userlogin" element={<UserLogin onLogin={setLoggedIn} />} />
+        <Route path="/newuserform" element={<NewUserForm />} />
+        <Route path="/productdetails/:productId" element={<ProductDetails products={products} />} />
+        <Route path="/jeweleryproducts" element={<JeweleryProducts />} />
+        <Route path="/womensclothing" element={<WomensClothingProducts />} />
+        <Route path="/mensclothing" element={<MensClothingProducts />} />
+        <Route path="/electronics" element={<ElectronicProducts />} />
+        <Route path="/cart" element={<Cart />} />
+      </Routes>
       </div>
     </>
   );
 }
+
 export default App;

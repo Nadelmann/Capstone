@@ -1,0 +1,48 @@
+.wrapper{
+    width: 500px;
+  padding: 20px;
+  font-family: 'Ubuntu', sans-serif;
+  display: flex;
+  justify-content: space-between;
+  display: flex;
+  flex-direction: row;
+}
+.buttoncart{
+  padding: 0.6em 1.2em;
+  font-size: 1.4rem;
+  font-weight: 200;
+  background: linear-gradient(to bottom, #101062, #8c6194); 
+  color: white;
+  cursor: pointer;
+  transition: background 0.25s, color 0.25s;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: row space-between;
+}
+.ShoppingCart {
+  display: flex;
+  flex-direction: column;
+  background-color: #f2f2f2;
+  border-radius: 1rem;
+  box-shadow: 0 0 10px 0 rgba(0,0,0,0.2);
+  padding: 4rem;
+  margin: 2rem;
+  max-width: 800px;
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 1.5rem;
+  color: #674185;
+  text-align: center;
+  font-weight: bolder;
+  align-items: center;
+}
+.cartcard{
+  display: flex;
+
+}
+.buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2rem;
+}

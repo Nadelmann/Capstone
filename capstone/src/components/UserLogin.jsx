@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import './UserLogin.css';
 
 const UserLogin = ({ onLogin }) => {
   const [username, setUsername] = useState('');
@@ -59,19 +60,22 @@ const UserLogin = ({ onLogin }) => {
   };
   
 
-  return (
-    <div>
-      <h2>Login</h2>
+  return (   
+    <div className='login-container'>
+    <h2 style={{color:'rgb(82, 82, 136)', fontWeight:'bolder'}}>Login:</h2>
       {error && <p>{error.message}</p>}
+      <div className='form'>
       <form onSubmit={handleSubmit}>
         <label>
-          Username: <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} />
+          Username: <input className='input' type="text" value={username} onChange={(e) => setUsername(e.target.value)} />
         </label>
+        <br />
         <label>
-          Password: <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+          Password: <input className='input' type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
         </label>
-        <button type="submit">Submit</button>
+        <button className='submitbutton' type="submit">Submit</button>
       </form>
+      </div>
     </div>
   );
 };

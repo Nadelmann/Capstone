@@ -1,12 +1,10 @@
-import { useState } from "react";
-import ProductCard from "./Productcard";
+import { useState, useEffect } from 'react';
+import ProductCard from "./Productcard"; 
 import ProductDetails from "./ProductDetails";
 import { MDBContainer, MDBRow, MDBCol } from "mdbreact";
-import PropTypes from "prop-types";
 
-
-
-export default function AllProducts({ products, search }) {
+function JeweleryProducts() {
+  const [jeweleryProducts, setJeweleryProducts] = useState([]);
   const [selectedProduct, setSelectedProduct] = useState(null);
 
   const openProductDetails = (product) => {
@@ -17,24 +15,33 @@ export default function AllProducts({ products, search }) {
     setSelectedProduct(null);
   };
 
-  const filteredProducts = products.filter((product) => {
-    // Check if the search term is present in title, description, or category
-    const searchTerm = search.toLowerCase();
-    return (
-      product.title.toLowerCase().includes(searchTerm) ||
-      product.description.toLowerCase().includes(searchTerm) ||
-      product.category.toLowerCase().includes(searchTerm)
-    );
+  const [search] = useState("");
+
+  const filteredProducts = jeweleryProducts.filter((product) => {
+    return product.title.toLowerCase().includes(search.toLowerCase());
   });
 
+  useEffect(() => {
+    fetch('https://fakestoreapi.com/products/category/jewelery')
+      .then(async (response) => {
+        if (!response.ok) {
+          throw new Error('Failed to fetch products');
+        }
+        const data = await response.json();
+        setJeweleryProducts(data); // Correct the state variable to setJeweleryProducts
+      })
+      .catch((error) => {
+        console.error(error); // Log the error
+      });
+  }, []); // The dependency array should be empty
 
   return (
-    <div>
+    <div style={{ marginLeft: 45, marginRight: 45 }}>
       <MDBContainer>
         <div style={{ padding: 10 }} />
         <MDBRow>
           {filteredProducts.map((product, index) => (
-            <MDBCol key={`${product._id}-${index}`} md="4">
+            <MDBCol key={`${product.id}-${index}`} md="4">
               <div style={{ display: "flex", flexDirection: "column" }}>
                 <ProductCard product={product} openProductDetails={openProductDetails} />
               </div>
@@ -57,8 +64,4 @@ export default function AllProducts({ products, search }) {
   );
 }
 
-AllProducts.propTypes = {
-  products: PropTypes.array.isRequired,
-  search: PropTypes.string.isRequired,
-  setSearch: PropTypes.func.isRequired,
-};
+export default JeweleryProducts;
